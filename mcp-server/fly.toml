@@ -1,0 +1,19 @@
+# fly launch --no-deploy && fly deploy   (from mcp-server/)
+# Set the data source first:
+#   fly secrets set DB_URL=https://github.com/tkthomas27/charlotte-food-grades/releases/download/data-latest/db.duckdb
+
+app = "charlotte-food-grades"
+primary_region = "atl"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

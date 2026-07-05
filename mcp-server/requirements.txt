@@ -1,0 +1,4 @@
+mcp>=1.10
+duckdb>=1.0
+requests>=2.31
+uvicorn>=0.30

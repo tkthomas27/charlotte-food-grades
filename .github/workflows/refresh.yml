@@ -1,0 +1,57 @@
+name: Weekly data refresh + deploy
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"   # Mondays 09:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write   # upload the refreshed DuckDB release asset
+  pages: write
+  id-token: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download previous database
+        run: |
+          mkdir -p data
+          gh release download data-latest --pattern db.duckdb --dir data --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Weekly update (scrape -> geocode -> export)
+        run: python -m pipeline.ingest weekly
+
+      - name: Publish refreshed database
+        run: |
+          gh release upload data-latest data/db.duckdb --clobber
+          gh release edit data-latest --notes "Refreshed $(date -u +%Y-%m-%dT%H:%MZ)"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

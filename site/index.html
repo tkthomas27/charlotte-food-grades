@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charlotte Food Grades — Mecklenburg County inspection map</title>
+  <meta name="description"
+        content="Interactive map of food-service inspection grades across Charlotte and Mecklenburg County, NC. Unofficial visualization of public health inspection data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="map" aria-label="Map of food service facilities in Mecklenburg County"></div>
+
+  <header class="brand">
+    <h1>Charlotte<span>Food Grades</span></h1>
+    <p id="updated">loading…</p>
+  </header>
+
+  <section class="controls" id="controls">
+    <button id="controls-toggle" aria-expanded="true" aria-controls="controls-body">Filters</button>
+    <div id="controls-body">
+      <input id="search" type="search" placeholder="Search name or address…" autocomplete="off">
+      <select id="type-filter" aria-label="Facility type">
+        <option value="">All facility types</option>
+      </select>
+      <div class="grade-row" role="group" aria-label="Grade filter">
+        <button class="grade-btn on" data-grade="A">A</button>
+        <button class="grade-btn on" data-grade="B">B</button>
+        <button class="grade-btn on" data-grade="C">C&darr;</button>
+        <button class="grade-btn on" data-grade="ungraded">n/a</button>
+      </div>
+      <label class="recent"><input type="checkbox" id="recent"> Inspected in last 90 days</label>
+      <p class="count" id="count"></p>
+    </div>
+  </section>
+
+  <aside class="panel" id="panel" hidden>
+    <button class="close" id="panel-close" aria-label="Close details">&times;</button>
+    <div id="panel-body"></div>
+  </aside>
+
+  <footer class="disclaimer">
+    <p><strong>Unofficial visualization</strong> of public
+      <a href="https://public.cdpehs.com/NCENVPBL/ESTABLISHMENT/ShowESTABLISHMENTTablePage.aspx?ESTTST_CTY=60"
+         target="_blank" rel="noopener">Mecklenburg County Environmental Health</a> records,
+      refreshed weekly. Grades can change between refreshes — the county lookup is the
+      authoritative record.
+      <a href="https://github.com/tkthomas27/charlotte-food-grades" target="_blank" rel="noopener">Source</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
