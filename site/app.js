@@ -183,13 +183,15 @@ function showPanel(p) {
     <div class="gradeline">
       <div class="badge ${bucket}">${badge}</div>
       <div>
-        <div class="score">${p.score != null ? Number(p.score).toFixed(1) : "—"} / 100</div>
+        <div class="score">${p.score != null
+          ? (p.grade ? `${Number(p.score).toFixed(1)} / 100` : `score ${Number(p.score).toFixed(1)}`)
+          : "not scored"}</div>
         <div class="when">inspected ${esc(p.last_date)}</div>
       </div>
     </div>
     ${sparkline(spark)}
     ${viols.length ? `<h3>Recent violations</h3>` + viols.map((v) => `
-      <div class="viol ${v.pts > 0 ? "risk_factor" : ""}">
+      <div class="viol ${parseInt(v.code, 10) <= 29 ? "risk_factor" : ""}">
         <p>${esc(v.desc)}</p>
         <p class="meta">item ${esc(v.code)}${v.pts != null ? ` · ${v.pts} pts` : ""}</p>
       </div>`).join("") : `<h3>No violation details on file</h3>`}

@@ -170,21 +170,25 @@ def nearby_establishments(lat: float, lon: float, radius_miles: float = 1.0,
                max_by(score, inspection_date) AS score,
                max_by(grade, inspection_date) AS grade
         FROM inspections GROUP BY facility_id
+      ),
+      candidates AS (
+        SELECT f.id, f.name, f.facility_type, f.address, f.city,
+               l.grade, l.score, l.last_date,
+               3958.8 * 2 * asin(sqrt(
+                 sin(radians((f.lat - ?) / 2)) ** 2 +
+                 cos(radians(?)) * cos(radians(f.lat)) *
+                 sin(radians((f.lon - ?) / 2)) ** 2)) AS miles
+        FROM facilities f JOIN latest l ON l.facility_id = f.id
+        WHERE f.lat IS NOT NULL {score_filter}
       )
-      SELECT f.id, f.name, f.facility_type, f.address, f.city,
-             l.grade, l.score, l.last_date,
-             3958.8 * 2 * asin(sqrt(
-               sin(radians((f.lat - ?) / 2)) ** 2 +
-               cos(radians(?)) * cos(radians(f.lat)) *
-               sin(radians((f.lon - ?) / 2)) ** 2)) AS miles
-      FROM facilities f JOIN latest l ON l.facility_id = f.id
-      WHERE f.lat IS NOT NULL
+      SELECT * FROM candidates WHERE miles <= ? ORDER BY miles LIMIT ?
     """
     params: list = [lat, lat, lon]
+    score_filter = ""
     if min_score is not None:
-        sql += " AND l.score >= ?"
+        score_filter = "AND l.score >= ?"
         params.append(min_score)
-    sql += " QUALIFY miles <= ? ORDER BY miles LIMIT ?"
+    sql = sql.format(score_filter=score_filter)
     params += [radius_miles, limit]
     rows = q(sql, params)
     for r in rows:
