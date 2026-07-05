@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-05T20:07:15Z",
+  "generated_at": "2026-07-05T20:54:59Z",
   "facilities": 8251,
   "inspections": 123658,
-  "violations": 1649,
+  "violations": 4910,
   "grades": {
-    "ungraded": 3698,
-    "C": 1,
     "A": 5084,
-    "B": 23
+    "B": 23,
+    "ungraded": 3698,
+    "C": 1
   },
   "types": {
     "1 - Restaurant": 2946,
@@ -39,8 +39,8 @@
     "52 - Seasonal Spa": 7,
     "6 - Edu. Food Service": 5,
     "22 - Summer Camps": 3,
-    "54 - Year-Round Wading Pool": 2,
     "21 - Bed & Breakfast Home": 2,
+    "54 - Year-Round Wading Pool": 2,
     "45 - Local Confinement": 1
   }
 }
