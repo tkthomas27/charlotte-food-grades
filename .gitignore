@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Data artifacts (rebuilt by pipeline)
+data/*.duckdb
+data/*.duckdb.wal
+data/raw/
+
+# Node
+node_modules/
+dist/
+
+# OS / editor
+.DS_Store
+.env
