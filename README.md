@@ -3,7 +3,7 @@
 Interactive map of food-service inspection grades across Charlotte / Mecklenburg County,
 NC, backed by scraped public inspection data, plus a live MCP server over the same dataset.
 
-- **Map:** https://tkthomas27.github.io/charlotte-food-grades/
+- **Map:** deployed on Vercel (Git integration; project root directory = `site/`)
 - **Data source:** Mecklenburg County Environmental Health via the state's public CDPEHS
   lookup (see [docs/DATA-SOURCE.md](docs/DATA-SOURCE.md) for the CDPEHS-vs-EHIDS decision
   and the reverse-engineered data paths)
@@ -15,7 +15,7 @@ NC, backed by scraped public inspection data, plus a live MCP server over the sa
 CDPEHS (public.cdpehs.com, county 60)
    │  CSV export (date-chunked)  +  grid walk → violation pages
    ▼
-pipeline/  ──►  data/db.duckdb  ──►  site/data/facilities.geojson ──► GitHub Pages (MapLibre)
+pipeline/  ──►  data/db.duckdb  ──►  site/data/facilities.geojson ──► Vercel (MapLibre site)
    ▲                    │
    │                    └──► GitHub release asset `data-latest` ──► MCP server (Fly.io)
    └── weekly GitHub Action
@@ -25,7 +25,7 @@ pipeline/  ──►  data/db.duckdb  ──►  site/data/facilities.geojson �
   downloads the previous DuckDB from the `data-latest` release, grid-walks the last ~35
   days of inspections (learning internal CDP ids and fetching violation details), geocodes
   new facilities via the Census Bureau batch geocoder, exports GeoJSON, republishes the
-  DB, and deploys the site to Pages.
+  DB, and commits the refreshed `site/data/` — which triggers a Vercel redeploy.
 - **History** is kept from ~2014 (earliest data in CDPEHS for Mecklenburg).
 
 ## Pipeline

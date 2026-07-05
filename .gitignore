@@ -9,7 +9,6 @@ venv/
 data/*.duckdb
 data/*.duckdb.wal
 data/raw/
-site/data/
 
 # Node
 node_modules/
