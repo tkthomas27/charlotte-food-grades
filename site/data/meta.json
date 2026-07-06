@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-05T20:54:59Z",
+  "generated_at": "2026-07-06T13:09:18Z",
   "facilities": 8251,
   "inspections": 123658,
-  "violations": 4910,
+  "violations": 6239,
   "grades": {
-    "A": 5084,
-    "B": 23,
     "ungraded": 3698,
-    "C": 1
+    "C": 1,
+    "A": 5084,
+    "B": 23
   },
   "types": {
     "1 - Restaurant": 2946,
