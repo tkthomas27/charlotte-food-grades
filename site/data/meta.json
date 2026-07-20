@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-07-13T12:25:42Z",
-  "facilities": 8272,
-  "inspections": 123953,
-  "violations": 7339,
+  "generated_at": "2026-07-20T12:09:25Z",
+  "facilities": 8296,
+  "inspections": 124263,
+  "violations": 8588,
   "grades": {
-    "A": 5094,
-    "B": 24,
-    "ungraded": 3708,
-    "C": 1
+    "A": 5109,
+    "B": 25,
+    "ungraded": 3719,
+    "C": 2
   },
   "types": {
-    "1 - Restaurant": 2953,
-    "2 - Food Stands": 1104,
+    "1 - Restaurant": 2962,
+    "2 - Food Stands": 1109,
     "50 - Seasonal Swimming Pool": 917,
-    "61 - Tattoo Artists": 735,
+    "61 - Tattoo Artists": 743,
     "53 - Year-Round Swimming Pool": 508,
-    "43 - Residential Care": 392,
+    "43 - Residential Care": 395,
     "42 - Child Care": 354,
     "44 - School Building": 341,
-    "3 - Mobile Food": 335,
+    "3 - Mobile Food": 338,
     "20 - Lodging": 225,
     "11 - Public School Lunch": 184,
     "51 - Seasonal Wading Pool": 127,
@@ -39,8 +39,8 @@
     "52 - Seasonal Spa": 7,
     "6 - Edu. Food Service": 5,
     "22 - Summer Camps": 4,
-    "54 - Year-Round Wading Pool": 2,
     "21 - Bed & Breakfast Home": 2,
+    "54 - Year-Round Wading Pool": 2,
     "45 - Local Confinement": 1
   }
 }
