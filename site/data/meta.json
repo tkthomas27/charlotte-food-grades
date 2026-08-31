@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-08-17T10:07:18Z",
-  "facilities": 8358,
-  "inspections": 125374,
-  "violations": 13153,
+  "generated_at": "2026-08-31T17:15:59Z",
+  "facilities": 8408,
+  "inspections": 126076,
+  "violations": 14611,
   "grades": {
-    "ungraded": 3750,
-    "C": 2,
-    "A": 5140,
-    "B": 25
+    "A": 5156,
+    "B": 28,
+    "ungraded": 3783,
+    "C": 2
   },
   "types": {
-    "1 - Restaurant": 2980,
-    "2 - Food Stands": 1112,
-    "50 - Seasonal Swimming Pool": 918,
-    "61 - Tattoo Artists": 764,
-    "53 - Year-Round Swimming Pool": 508,
-    "43 - Residential Care": 399,
+    "1 - Restaurant": 2989,
+    "2 - Food Stands": 1119,
+    "50 - Seasonal Swimming Pool": 921,
+    "61 - Tattoo Artists": 785,
+    "53 - Year-Round Swimming Pool": 511,
+    "43 - Residential Care": 403,
     "42 - Child Care": 357,
-    "3 - Mobile Food": 346,
-    "44 - School Building": 342,
-    "20 - Lodging": 226,
+    "3 - Mobile Food": 348,
+    "44 - School Building": 344,
+    "20 - Lodging": 227,
     "11 - Public School Lunch": 184,
     "51 - Seasonal Wading Pool": 127,
     "30 - Meat Market": 112,
@@ -39,8 +39,8 @@
     "52 - Seasonal Spa": 7,
     "6 - Edu. Food Service": 5,
     "22 - Summer Camps": 4,
-    "21 - Bed & Breakfast Home": 2,
     "54 - Year-Round Wading Pool": 2,
+    "21 - Bed & Breakfast Home": 2,
     "45 - Local Confinement": 1
   }
 }
